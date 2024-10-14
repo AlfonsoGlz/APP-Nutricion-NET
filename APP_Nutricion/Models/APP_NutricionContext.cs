@@ -23,7 +23,7 @@ namespace APP_Nutricion.Models
         public virtual DbSet<Comida> Comida { get; set; } = null!;
         public virtual DbSet<Desayuno> Desayunos { get; set; } = null!;
         public virtual DbSet<InfoUsario> InfoUsarios { get; set; } = null!;
-        public virtual DbSet<Unidad> Unidads { get; set; } = null!;
+        public virtual DbSet<Unidad> Unidad { get; set; } = null!;
         public virtual DbSet<Usuario> Usuarios { get; set; } = null!;
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)

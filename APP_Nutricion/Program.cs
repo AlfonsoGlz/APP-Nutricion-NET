@@ -8,6 +8,8 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllersWithViews();
 builder.Services.AddDbContext<APP_NutricionContext>(options => options.UseSqlServer(builder.Configuration.GetConnectionString("ConexionApp")));
 builder.Services.AddScoped<IAlimentosService, AlimentosService>();
+builder.Services.AddScoped<IUnidadService, UnidadService>();
+builder.Services.AddScoped<ICategoriaService, CategoriaService>();
 
 var app = builder.Build();
 

@@ -1,0 +1,82 @@
+﻿@model APP_Nutricion.Models.ViewModels.UpsertVM
+
+@{
+    ViewData["Title"] = "Agregar";
+}
+
+<h1>Agregar</h1>
+
+<h4>Alimento</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Agregar">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label class="control-label">Nombre</label>
+                <input class="form-control" type="text"/>
+                @* <span asp-validation-for="NombreAlimento" class="text-danger"></span> *@
+            </div>
+            <div class="form-group">
+                <label class="control-label">Cantidad</label>
+                <input class="form-control" type="number" />
+                @* <span asp-validation-for="Cantidad" class="text-danger"></span> *@
+            </div>
+            <div class="form-group">
+                <label class="control-label">Unidad</label>
+                <select asp-for="AlimentoItems!.UnidadId" class="form-control" asp-items="@Model.UnidadesList">
+                    <option disabled selected>--Seleccione la Unidad</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label class="control-label">Calorias</label>
+                <input class="form-control" type="number" />
+                @* <span asp-validation-for="Calorias" class="text-danger"></span> *@
+            </div>
+            <div class="form-group">
+                <label class="control-label">Proteinas</label>
+                <input class="form-control" type="number" />
+                @* <span asp-validation-for="Proteinas" class="text-danger"></span> *@
+            </div>
+            <div class="form-group">
+                <label class="control-label">Carbohidratos</label>
+                <input class="form-control" type="number" />
+                @* <span asp-validation-for="Carbohidratos" class="text-danger"></span> *@
+            </div>
+            <div class="form-group">
+                <label class="control-label">Grasas</label>
+                <input class="form-control" type="number" />
+                @* <span asp-validation-for="Grasas" class="text-danger"></span> *@
+            </div>
+            <div class="form-group">
+                <label class="control-label">Fibra</label>
+                <input class="form-control" type="number" />
+                @* <span asp-validation-for="Fibra" class="text-danger"></span> *@
+            </div>
+            <div class="form-group">
+                <label class="control-label">Sodio</label>
+                <input class="form-control" type="number" />
+                @* <span asp-validation-for="Sodio" class="text-danger"></span> *@
+            </div>
+            <div class="form-group">
+                <label class="control-label">Categoria</label>
+                <select asp-for="AlimentoItems!.CategoriaId" class ="form-control" asp-items="@Model.CategoriasList">
+                    <option disabled selected>--Seleccione una Categoria</option>
+                </select>
+            </div>
+
+            <br />
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
