@@ -1,4 +1,5 @@
 using APP_Nutricion.Models;
+using APP_Nutricion.Services;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -6,6 +7,7 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 builder.Services.AddDbContext<APP_NutricionContext>(options => options.UseSqlServer(builder.Configuration.GetConnectionString("ConexionApp")));
+builder.Services.AddScoped<IAlimentosService, AlimentosService>();
 
 var app = builder.Build();
 
@@ -22,6 +24,6 @@ app.UseAuthorization();
 
 app.MapControllerRoute(
     name: "default",
-    pattern: "{controller=Home}/{action=Index}/{id?}");
+    pattern: "{controller=Alimentos}/{action=Index}/{id?}");
 
 app.Run();
