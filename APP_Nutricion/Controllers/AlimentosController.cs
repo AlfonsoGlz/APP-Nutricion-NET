@@ -39,10 +39,64 @@ namespace APP_Nutricion.Controllers
                 {
                     Value = c.IdCategoria.ToString(),
                     Text = c.NombreCategoria
-                }),
+                })
             };
 
             return View(VM);
+        }
+
+        [HttpPost]
+        public IActionResult Agregar(UpsertVM v)
+        {
+            _service.AgregarAlimento(v);
+
+            return RedirectToAction("Index");
+        }
+
+        public IActionResult Editar(int id)
+        {
+            Alimento alimento = _service.ObtenerAlimentoId(id);
+
+            UpsertVM VM = new UpsertVM()
+            {
+                AlimentoItems = alimento,
+                UnidadesList = _unidadService.ListarUnidades().Select(u => new SelectListItem
+                {
+                    Value = u.IdUnidad.ToString(),
+                    Text = u.NombreUnidad
+                }),
+                CategoriasList = _categoriaService.ListarCategorias().Select(c => new SelectListItem
+                {
+                    Value = c.IdCategoria.ToString(),
+                    Text = c.NombreCategoria
+                })
+            };
+
+            return View(VM);
+        }
+
+        [HttpPost]
+        public IActionResult Editar(UpsertVM v)
+        {
+            _service.EditarAlimento(v);
+
+            return RedirectToAction("Index");
+        }
+
+        public IActionResult Eliminar(int id)
+        {
+            Alimento aliemento = _service.ObtenerAlimentoId(id);
+
+            return View(aliemento);
+        }
+
+        [HttpPost]
+        public IActionResult EliminarPost(Alimento a)
+        {
+            _service.EliminarAlimento(a);
+
+            return RedirectToAction("Index");
+
         }
 
     }

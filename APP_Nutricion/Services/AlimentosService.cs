@@ -1,4 +1,5 @@
 ﻿using APP_Nutricion.Models;
+using APP_Nutricion.Models.ViewModels;
 using Microsoft.EntityFrameworkCore;
 
 namespace APP_Nutricion.Services
@@ -20,38 +21,38 @@ namespace APP_Nutricion.Services
 
         public Alimento ObtenerAlimentoId(int id)
         {
-            Alimento alimento = _context.Alimentos.First(a => a.IdAlimento == id);
+            Alimento alimento = _context.Alimentos.Include("Unidad").Include("Categoria").First(a => a.IdAlimento == id);
             return alimento;
         }
 
-        public void AgregarAlimento(Alimento a)
+        public void AgregarAlimento(UpsertVM v)
         {
-            _context.Alimentos.Add(a);
+            _context.Alimentos.Add(v.AlimentoItems!);
             _context.SaveChanges();
         }
 
-        public void EditarAlimento(Alimento a)
+        public void EditarAlimento(UpsertVM v)
         {
-            Alimento alimento = _context.Alimentos.First(a => a.IdAlimento == a.IdAlimento);
+            Alimento alimento = _context.Alimentos.First(a => a.IdAlimento == v.AlimentoItems!.IdAlimento);
 
-            alimento.NombreAlimento = a.NombreAlimento;
-            alimento.Cantidad = a.Cantidad;
-            alimento.Unidad = a.Unidad;
-            alimento.Calorias = a.Calorias;
-            alimento.Proteinas = a.Proteinas;
-            alimento.Carbohidratos = a.Carbohidratos;
-            alimento.Grasas = a.Grasas;
-            alimento.Fibra = a.Fibra;
-            alimento.Sodio = a.Sodio;
-            alimento.Categoria = a.Categoria;
+            alimento.NombreAlimento = v.AlimentoItems!.NombreAlimento;
+            alimento.Cantidad = v.AlimentoItems.Cantidad;
+            alimento.Unidad = v.AlimentoItems.Unidad;
+            alimento.Calorias = v.AlimentoItems.Calorias;
+            alimento.Proteinas = v.AlimentoItems.Proteinas;
+            alimento.Carbohidratos = v.AlimentoItems.Carbohidratos;
+            alimento.Grasas = v.AlimentoItems.Grasas;
+            alimento.Fibra = v.AlimentoItems.Fibra;
+            alimento.Sodio = v.AlimentoItems.Sodio;
+            alimento.Categoria = v.AlimentoItems.Categoria;
 
             _context.SaveChanges();
 
         }
 
-        public void EliminarAlimento(int id)
+        public void EliminarAlimento(Alimento a)
         {
-            Alimento alimento = _context.Alimentos.First(a => a.IdAlimento == id);
+            Alimento alimento = _context.Alimentos.Find(a.IdAlimento)!;
 
             _context.Alimentos.Remove(alimento);
             _context.SaveChanges();

@@ -1,4 +1,5 @@
 ﻿using APP_Nutricion.Models;
+using APP_Nutricion.Models.ViewModels;
 
 namespace APP_Nutricion.Services
 {
@@ -6,8 +7,8 @@ namespace APP_Nutricion.Services
     {
         List<Alimento> ListarAlimentos();
         Alimento ObtenerAlimentoId(int id);
-        void AgregarAlimento(Alimento a);
-        void EditarAlimento(Alimento a);
-        void EliminarAlimento(int id);
+        void AgregarAlimento(UpsertVM v);
+        void EditarAlimento(UpsertVM v);
+        void EliminarAlimento(Alimento a);
     }
 }
