@@ -13,13 +13,13 @@
         <form asp-action="Agregar">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
-                <label class="control-label">Nombre</label>
-                <input class="form-control" type="text"/>
+                <label class="control-label" asp-for="AlimentoItems!.NombreAlimento">Nombre Alimento</label>
+                <input class="form-control" asp-for="AlimentoItems!.NombreAlimento"/>
                 @* <span asp-validation-for="NombreAlimento" class="text-danger"></span> *@
             </div>
             <div class="form-group">
-                <label class="control-label">Cantidad</label>
-                <input class="form-control" type="number" />
+                <label class="control-label" asp-for="AlimentoItems!.Cantidad">Cantidad</label>
+                <input class="form-control" asp-for="AlimentoItems!.Cantidad" />
                 @* <span asp-validation-for="Cantidad" class="text-danger"></span> *@
             </div>
             <div class="form-group">
@@ -29,33 +29,33 @@
                 </select>
             </div>
             <div class="form-group">
-                <label class="control-label">Calorias</label>
-                <input class="form-control" type="number" />
+                <label class="control-label" asp-for="AlimentoItems!.Calorias">Calorias</label>
+                <input class="form-control" asp-for="AlimentoItems!.Calorias" />
                 @* <span asp-validation-for="Calorias" class="text-danger"></span> *@
             </div>
             <div class="form-group">
-                <label class="control-label">Proteinas</label>
-                <input class="form-control" type="number" />
+                <label class="control-label" asp-for="AlimentoItems!.Proteinas">Proteinas</label>
+                <input class="form-control" asp-for="AlimentoItems!.Proteinas" />
                 @* <span asp-validation-for="Proteinas" class="text-danger"></span> *@
             </div>
             <div class="form-group">
-                <label class="control-label">Carbohidratos</label>
-                <input class="form-control" type="number" />
+                <label class="control-label" asp-for="AlimentoItems!.Carbohidratos">Carbohidratos</label>
+                <input class="form-control" asp-for="AlimentoItems!.Carbohidratos" />
                 @* <span asp-validation-for="Carbohidratos" class="text-danger"></span> *@
             </div>
             <div class="form-group">
-                <label class="control-label">Grasas</label>
-                <input class="form-control" type="number" />
+                <label class="control-label" asp-for="AlimentoItems!.Grasas">Grasas</label>
+                <input class="form-control" asp-for="AlimentoItems!.Grasas" />
                 @* <span asp-validation-for="Grasas" class="text-danger"></span> *@
             </div>
             <div class="form-group">
-                <label class="control-label">Fibra</label>
-                <input class="form-control" type="number" />
+                <label class="control-label" asp-for="AlimentoItems!.Fibra">Fibra</label>
+                <input class="form-control" asp-for="AlimentoItems!.Fibra" />
                 @* <span asp-validation-for="Fibra" class="text-danger"></span> *@
             </div>
             <div class="form-group">
-                <label class="control-label">Sodio</label>
-                <input class="form-control" type="number" />
+                <label class="control-label" asp-for="AlimentoItems!.Sodio">Sodio</label>
+                <input class="form-control" asp-for="AlimentoItems!.Sodio" />
                 @* <span asp-validation-for="Sodio" class="text-danger"></span> *@
             </div>
             <div class="form-group">

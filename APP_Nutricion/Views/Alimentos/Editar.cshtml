@@ -1,0 +1,77 @@
+﻿@model APP_Nutricion.Models.ViewModels.UpsertVM
+
+@{
+    ViewData["Title"] = "Editar";
+}
+
+<h1>Editar</h1>
+
+<h4>Alimento</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Editar" asp-controller="Alimentos">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="AlimentoItems!.IdAlimento" />
+            <div class="form-group">
+                <label asp-for="AlimentoItems!.NombreAlimento" class="control-label"></label>
+                <input asp-for="AlimentoItems!.NombreAlimento" class="form-control" />
+                <span asp-validation-for="AlimentoItems!.NombreAlimento" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="AlimentoItems!.Cantidad" class="control-label"></label>
+                <input asp-for="AlimentoItems!.Cantidad" class="form-control" />
+                <span asp-validation-for="AlimentoItems!.Cantidad" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="AlimentoItems!.Unidad" class="control-label"></label>
+                <select asp-for="AlimentoItems!.UnidadId" class="form-control" asp-items="@Model.UnidadesList"></select>
+                @* <span asp-validation-for="UnidadId" class="text-danger"></span> *@
+            </div>
+            <div class="form-group">
+                <label asp-for="AlimentoItems!.Calorias" class="control-label"></label>
+                <input asp-for="AlimentoItems!.Calorias" class="form-control" />
+                <span asp-validation-for="AlimentoItems!.Calorias" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="AlimentoItems!.Proteinas" class="control-label"></label>
+                <input asp-for="AlimentoItems!.Proteinas" class="form-control" />
+                <span asp-validation-for="AlimentoItems!.Proteinas" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="AlimentoItems!.Carbohidratos" class="control-label"></label>
+                <input asp-for="AlimentoItems!.Carbohidratos" class="form-control" />
+                <span asp-validation-for="AlimentoItems!.Carbohidratos" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="AlimentoItems!.Grasas" class="control-label"></label>
+                <input asp-for="AlimentoItems!.Grasas" class="form-control" />
+                <span asp-validation-for="AlimentoItems!.Grasas" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="AlimentoItems!.Fibra" class="control-label"></label>
+                <input asp-for="AlimentoItems!.Fibra" class="form-control" />
+                <span asp-validation-for="AlimentoItems!.Fibra" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="AlimentoItems!.Fibra" class="control-label"></label>
+                <input asp-for="AlimentoItems!.Fibra" class="form-control" />
+                <span asp-validation-for="AlimentoItems!.Fibra" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="AlimentoItems!.Categoria" class="control-label"></label>
+                <select asp-for="AlimentoItems!.CategoriaId" class="form-control" asp-items="@Model.CategoriasList"></select>
+                @* <span asp-validation-for="CategoriaId" class="text-danger"></span> *@
+            </div>
+
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
